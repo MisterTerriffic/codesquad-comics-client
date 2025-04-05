@@ -1,12 +1,20 @@
-import books from "./src/data/books"
+import books from "../data/books"
 function Admin(){ 
+    return(
 <main>  
     <div class="box-design">
+    {books.map((books) => (
         <tr>
-            {books.map((books) => (
-                    <td>{books}</td>
-             ))}
+            <td>{books.title}</td>
+            <td>{books.author}</td>
+            <td>{books.publisher}</td>
+            <td>{books.genre}</td>
+            <td>{books.pages}</td>
+            <td>{books.rating}</td>
+            <td>{books.synopsis}</td>
         </tr>
+    ))}
+
        {/* <h1>Admin Page</h1>
        <div className="center_button">
         <button>Add New Comic</button>
@@ -92,6 +100,7 @@ function Admin(){
         </table> */}
     </div>
 </main>
+    )
 }
 
 
