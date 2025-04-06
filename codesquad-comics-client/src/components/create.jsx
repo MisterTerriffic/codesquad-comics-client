@@ -1,6 +1,6 @@
 function Create() {
     <main>
-    <div class="box-design">
+    <div className="box-design">
             <h1>Create New Comic</h1>
         <div>
             <form action="/action_page.php">

@@ -2,7 +2,7 @@ import books from "../data/books"
 function home() {
     return(
     <main>
-            {/* <div className="box-design">
+            <div className="box-design">
                 <h1>Codesquad Comics</h1>
             <p> CodeSquad Comics is a collection of graphic novels read by Walter. Copyrighted images are used for review purposes only. 
                 Meta information about this collection can be found below. A detailed list of all the graphic novels in this collection 
@@ -10,7 +10,7 @@ function home() {
                 a brief synopsis, can be found by navigating to the homepage and clicking the image of the book cover or the Details link 
                 for the desired graphic novel.
             </p>
-            </div> */}
+            </div>
     <div className="box-design">
         
     {books.map((books) => (

@@ -2,7 +2,7 @@ import books from "../data/books"
 function Admin(){ 
     return(
 <main>  
-    <div class="box-design">
+    <div className="box-design">
     {books.map((books) => (
         <tr>
             <td>{books.title}</td>
