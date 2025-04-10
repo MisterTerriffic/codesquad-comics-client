@@ -1,8 +1,11 @@
 import books from "../data/books"
+
 function Admin(){ 
+    const [books, setBooks] = useState([]);
+
     return(
 <main>  
-    <div class="box-design">
+    <div key={books._id} class="box-design">
     {books.map((books) => (
         <tr>
             <td>{books.title}</td>

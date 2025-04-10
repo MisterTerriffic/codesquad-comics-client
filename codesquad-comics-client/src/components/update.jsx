@@ -1,4 +1,10 @@
+import { useState } from "react";
+import books from "../data/books";
+
 function Update(){
+    const id = "2d4f24ca-f395-461f-bc57-6a7ca61d63b9";
+    const [bookData, setBookData] = useState("");
+    
 <main>
     <div className="box-design">
              <h1>Create New Comic</h1>

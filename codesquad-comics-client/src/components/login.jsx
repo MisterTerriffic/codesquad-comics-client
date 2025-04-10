@@ -1,23 +1,42 @@
-function Login() {
-    <main>
-    <div className="box-design">
-            <h1>Login</h1>
-       <div>     
-        <form>
-            <label htmlFor="email">Email Address:</label>
-           <br><input type="text" id="email" name="email" value=""
-            placeholder="Email"></input></br>
-            <label htmlFor="password">Password:</label>
-            <br><input type="text" id="password" name="password" value=""
-            placeholder="Password"></input></br>
-            <input type="submit" value="Submit"></input>
+import { useState } from "react";
+
+
+function Login(user, setUser) {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value);
+        e.preventDefault();
+        console.log("First Name", e.target.value);
+    }
+    const handleLastName = (e) => {
+        setLastName(e.target.value);
+        e.preventDefault();
+        console.log("Last Name", e.target.value);
+    }
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+        e.preventDefault();
+        console.log("Email", e.target.value);
+    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+        e.preventDefault();
+        console.log("Password", e.target.value);
+    }
+
+    return (      
+       <form onSubmit={Login}>
+            <input type="firstName" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} /> 
+            <input type="lastName" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </form>
-       </div> 
-    </div>
-    </main>
+    );
 }
-
-
 
 
 export default Login;
