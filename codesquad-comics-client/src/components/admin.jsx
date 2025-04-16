@@ -1,20 +1,21 @@
+import { useState } from "react";
 import books from "../data/books"
 
 function Admin(){ 
-    const [books, setBooks] = useState([]);
+    const [bookData, setBookData] = useState([]);
 
     return(
 <main>  
     <div key={books._id} class="box-design">
-    {books.map((books) => (
+    {bookData.map((bookData) => (
         <tr>
-            <td>{books.title}</td>
-            <td>{books.author}</td>
-            <td>{books.publisher}</td>
-            <td>{books.genre}</td>
-            <td>{books.pages}</td>
-            <td>{books.rating}</td>
-            <td>{books.synopsis}</td>
+            <td>{bookData.title}</td>
+            <td>{bookData.author}</td>
+            <td>{bookData.publisher}</td>
+            <td>{bookData.genre}</td>
+            <td>{bookData.pages}</td>
+            <td>{bookData.rating}</td>
+            <td>{bookData.synopsis}</td>
         </tr>
     ))}
     </div>

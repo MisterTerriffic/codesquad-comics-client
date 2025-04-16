@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function SignUp (user, setUser){
     const [firstName, setFirstName] = useState("");
         const [lastName, setLastName] = useState("");

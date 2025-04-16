@@ -1,37 +1,52 @@
 import { useState } from "react";
 
 function Create() {
-    const [title, setTitle] = useState("");
-    const [author, setAuthor] = useState("");
-    const [publisher, setPublisher] = useState("");
-    const [genre, setGenre] = useState("");
-    const [numberofpages, setNumberOfPages] = useState(0);
-    const [rating, setRating] = useState(0);
-    const [synposis, setSynopsis] = useState("");
+    const handleBookCreate = (e) => {
+        e.preventDefault();
+        console.log("Create Book Submitting");
+
+        console.log(e.target.title.value);
+        console.log(e.target.author.value);
+        console.log(e.target.publisher.value);
+        console.log(e.target.genre.value);
+        console.log(e.target.pages.value);
+        console.log(e.target.rating.value);
+        console.log(e.target.synopsis.value);
+   }
 
     const handleTitle = (e) => {
-        setTitle(e.target.value);
         e.preventDefault();
         console.log("Title", e.target.value);
     }
     const handleAuthor = (e) => {
-        setAuthor(e.target.value);
         e.preventDefault();
         console.log("Author", e.target.value);
     }
     const handlePublisher = (e) => {
-        setPublisher(e.target.value);
         e.preventDefault();
         console.log("Publisher", e.target.value);
     }
     const handleGenre = (e) => {
-        setGenre(e.target.value);
         e.preventDefault();
         console.log("Genre", e.target.value);
     }
+    const handlePages = (e) => {
+        e.preventDefault();
+        console.log("Pages", e.target.value);
+    }
+    const handleRating = (e) => {
+        e.preventDefault();
+        console.log("Rating", e.target.value);
+    }
+    const handleSynopsis = (e) => {
+        e.preventDefault();
+        console.log("Synopsis", e.target.value);
+    }
+  
+  
   
     return(
-        <form onSubmit={Create}>
+        <form onSubmit={handleBookCreate}>
             <label htmlFor="title">Title:</label>
             <input type="text" id="title" name="title"/>
             <label htmlFor="Author">Author:</label>
