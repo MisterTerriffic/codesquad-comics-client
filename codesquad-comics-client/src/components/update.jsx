@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import booksData from "../data/books";
 
 function Update(){
     const id = "2d4f24ca-f395-461f-bc57-6a7ca61d63b9";
-    const [booksData, setBookData] = useState({
+    const [book, setBook] = useState({
         id: "",
         author: "",
         title: "",
@@ -16,14 +16,13 @@ function Update(){
 
     useEffect(() => {
         const foundBook = booksData.find((booksData) => booksData.id === id);
-        setBookData(foundBook);
-      }, [booksData]);
+        setBook(foundBook);
+      }, [book]);
   
     const handleBookData = (e) => {
         e.preventDefault();
-        console.log(setBookData(e.target.value));
+        console.log(setBook(e.target.value));
         console.log("Book Data Successful");
-        
     }
 
 return (
@@ -34,11 +33,11 @@ return (
             <form action="/action_page.php" onSubmit={handleBookData}>
 
                 <label htmlFor="title">Title:</label>
-                <br><input type="text" id="title" name="title" value="Title value stored in database" placeholder="Title" required></input></br>
+                <br/><input type="text" id="title" name="title" value="Title value stored in database" placeholder="Title" required></input>
                 <label htmlFor="author">Author:</label>
-                <br><input type="text" id="author" name="author" value="Author value stored in database" placeholder="Author" required></input></br>
+                <br/><input type="text" id="author" name="author" value="Author value stored in database" placeholder="Author" required></input>
                 <label htmlFor="publishers">Publisher:</label>
-               <br><select id="publishers">
+               <br/><select id="publishers">
                 <option value="Boom Box">BOOM!Box</option>
                 <option value="DC">DC Comics</option>
                 <option value="HNA">Harry N. Abrams</option>
@@ -49,17 +48,17 @@ return (
                 <option value="Top Shelf Productions">Top Shelf Productions</option>
                 <option value="VIZ Media LLC">VIZ Media LLC</option>
                 <option value="Publisher value stored in database"selected disabled>Publisher value stored in database</option>
-               </select></br>
+               </select>
 
 
                 <label htmlFor="genre">Genre:</label>
-                <br><input type="text" id="genre" name="genre" value="Genre data stored in database" placeholder="Genre" required></input></br>
+                <br/><input type="text" id="genre" name="genre" value="Genre data stored in database" placeholder="Genre" required></input>
                 <label htmlFor="numberofpages">Number of Pages</label>
-                <br><input type="text" id="numberofpages" name="numberofpages" value="255" placeholder="Number of Pages" required></input></br>
+                <br/><input type="text" id="numberofpages" name="numberofpages" value="255" placeholder="Number of Pages" required></input>
                 <label htmlFor="rating">Rating:</label>
-                <br><input type="text" id="rating" name="rating" value="5" maxlength="2" size="2" required></input></br>
+                <br/><input type="text" id="rating" name="rating" value="5" maxlength="2" size="2" required></input>
                 <label htmlFor="synop">Synopsis:</label>
-                <br><input type="text" id="synop" name="synop" value="Synopsis value stored in database" placeholder="Synopsis" required></input></br>
+                <br/><input type="text" id="synop" name="synop" value="Synopsis value stored in database" placeholder="Synopsis" required></input>
                 <button type="submit">Update</button>
             </form>
         </div>

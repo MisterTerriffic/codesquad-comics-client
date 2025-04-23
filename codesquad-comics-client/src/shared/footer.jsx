@@ -2,20 +2,20 @@ function Footer(){
     <div class="footer-design">
         <span>
             <h3>VISIT US</h3>
-           <br> CodeSquad Comics</br>
-            <br>123 Dorchester Avenue</br>
+           <br/> CodeSquad Comics
+            <br/>123 Dorchester Avenue
             Boston, MA 02124
         </span>
         <span>
         <h3>LINKS</h3>
-        <br><a href="index.html"> Home</a></br>
-        <br><a href="about.html">About</a></br>
+        <br/><a href="index.html"> Home</a>
+        <br/><a href="about.html">About</a>
         <a href="login.html"> Login</a>
         </span>
         <span>
         <h3>FOLLOW US</h3>
         <a href="#">Facebook</a>
-        <br><a href="#">Instagram</a></br>
+        <br/><a href="#">Instagram</a>
         <a href="#">Twitter</a>
         </span>
         <span>
