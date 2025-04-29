@@ -4,8 +4,17 @@ import books from "../data/books";
 function home() {
   const [bookData, setBookData] = useState([]);
 
+  const url = "https://course-project-codesquad-comics-server.onrender.com/api/books";
+
   useEffect(() => {
     setBookData(bookData);
+    fetch(url)
+    .then((response) => response.json())
+    .then((result) => {
+        setBookData(result.data.book);
+        console.log(result.data.book);
+    })
+    .catch(console.log("Error"))
   }, []);
 
   return (

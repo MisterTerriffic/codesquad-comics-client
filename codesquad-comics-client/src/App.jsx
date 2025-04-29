@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route } from "react-router-dom"
 import './App.css'
 import Header from  './shared/header'
 import Home from  './components/home'
@@ -18,13 +19,16 @@ function App() {
     <>
       <div>
         <Header user={user} setUser={setUser}/>
-        <Home/>
-        <About/>
-        <Admin/>
-        <Create/>
-        <Login user={user} setUser={setUser}/>
-        <SignUp user={user} setUser={setUser}/>
-        <Update/>
+        <Routes>
+        <Route path="/home" index element= {<Home />} />
+        <Route path="/about" element= {<About />} />
+        <Route path="/admin" element= {<Admin />} />
+        <Route path="/create" element= {<Create />} />
+        <Route path="/login" element = {<Login user={user} setUser={setUser} />} />
+        <Route path="/signup" element = {<SignUp user={user} setUser={setUser} />} />
+        <Route path="/update" element= {<Update />} />
+        <Route path ="*" element={<h1>Page not Found</h1>} />
+        </Routes>
         <Footer/>
       </div>
     </>
