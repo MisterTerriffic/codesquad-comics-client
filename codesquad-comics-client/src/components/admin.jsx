@@ -22,15 +22,17 @@ function Admin(){
       const handleDeleteBook =() => {
         fetch(deleteUrl, {method: "DELETE", body: bookData})
             .then((response) => response.json())
-            .then(console.log("Success"));
-            .catch(console.log("Error"));
+            .then(() => console.log("Success"))
+            .catch(console.log("Error"))
       }
-
 
     return(
 <main>  
     <div>
         <button onClick={handleDeleteBook}>Delete</button>
+    </div>
+    <div>
+        <button onClick="/update">Update</button> 
     </div>
     <div key={books._id} class="box-design">
     {bookData.map((bookData) => (
