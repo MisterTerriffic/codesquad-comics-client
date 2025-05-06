@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import booksData from "../data/books";
+//import booksData from "../data/books"; //Kit: not needed
 
 function Update() {
  const navigate = useNavigate();
@@ -9,34 +9,41 @@ function Update() {
 
   const id = "2d4f24ca-f395-461f-bc57-6a7ca61d63b9";
 
-  const url = "https://course-project-codesquad-comics-server.onrender.com/api/books/${bookId}";
+  //const url = "https://course-project-codesquad-comics-server.onrender.com/api/books/${bookId}"; //Kit: almost
 
-  const [book, setBook] = useState({
-    id: "",
-    author: "",
-    title: "",
-    publisher: "",
-    genre: "",
-    numberofpages: 0,
-    rating: 0,
-    synopsis: "",
-  });
+  const url = `https://course-project-codesquad-comics-server.onrender.com/api/books/edit/${bookId}`;
+
+  //Kit: this was supposed to be initialized to an empty object
+  const [book, setBook] = useState({})
+  // const [book, setBook] = useState({
+  //   id: "",
+  //   author: "",
+  //   title: "",
+  //   publisher: "",
+  //   genre: "",
+  //   numberofpages: 0,
+  //   rating: 0,
+  //   synopsis: "",
+  // });
 
   useEffect(() => {
-    const foundBook = booksData.find((booksData) => booksData.id === id);
-    setBook(foundBook);
+    //const foundBook = booksData.find((booksData) => booksData.id === id); //Kit: not needed
+    // setBook(foundBook);
     fetch(url)
         .then((response) => response.json())
-        .then((foundBook) => console.log(foundBook))
-        .catch(console.log("Error"));
+        .then((result) => {
+          console.log("result", result);
+          setBook(result.data);
+          navigate("/admin");
+        })
+        .catch((error) => console.log("error :>> ", error));
     
-  }, [book]);
+  }, [id]); //change to ID to target the right book
 
   const handleBookData = (e) => {
+    e.preventDefault();
 
-  const handleSubmission = () => {
-    const putURL = `https://course-project-codesquad-comics-server.onrender.com/api/books/edit/${bookId}`;
-
+    //correct
     const body = {
         title: e.target.title.value,
         author: e.target.author.value,
@@ -47,19 +54,18 @@ function Update() {
         synopsis: e.target.synopsis.value,
       };
 
-    fetch(putURL, { method: "PUT", body: JSON.stringify() })
+    fetch(url, { method: "PUT", body: JSON.stringify(body) }) //body as params
     .then((response) => response.JSON())
-    .then((body) => {
-        console.log("Success")
-        console.log(body)
-        navigate("/admin");
-  })
-    .catch(console.log("error"))
+    .then((result) => {
+      console.log("result :>> ", result);
+      navigate("/admin");
+    })
+    .catch((error) => console.log("error", error));
 
-    }
-    e.preventDefault();
-    console.log(setBook(e.target.value));
-    console.log("Book Data Successful");
+  //Kit: not needed
+    // e.preventDefault();
+    // console.log(setBook(e.target.value));
+    // console.log("Book Data Successful");
   };
 
   return (
@@ -67,14 +73,16 @@ function Update() {
       <div className="box-design">
         <h1>Create New Comic</h1>
         <div>
-          <form action="/action_page.php" onSubmit={handleBookData}>
+          <form onSubmit={handleBookData}>
             <label htmlFor="title">Title:</label>
             <br />
             <input
               type="text"
               id="title"
               name="title"
-              value="Title value stored in database"
+              defaultValue={book.title}
+              // Kit: change to above to use the book "satellite"
+              //value="Title value stored in database"
               placeholder="Title"
               required
             ></input>
@@ -84,13 +92,21 @@ function Update() {
               type="text"
               id="author"
               name="author"
-              value="Author value stored in database"
+              defaultValue={book.author}
+              // Kit: change to above to use the book "satellite"
+              //value="Author value stored in database"
               placeholder="Author"
               required
             ></input>
             <label htmlFor="publishers">Publisher:</label>
             <br />
-            <select id="publishers">
+            <select id="publishers"
+            //Kit: you were missing - 
+            name="publishers"
+            defaultValue={book.publisher}
+            // Kit: change to above to use the book "satellite"
+            required
+            >
               <option value="Boom Box">BOOM!Box</option>
               <option value="DC">DC Comics</option>
               <option value="HNA">Harry N. Abrams</option>
@@ -102,13 +118,14 @@ function Update() {
                 Top Shelf Productions
               </option>
               <option value="VIZ Media LLC">VIZ Media LLC</option>
-              <option
+              {/* Kit: disabled due to state */}
+              {/* <option
                 value="Publisher value stored in database"
                 selected
                 disabled
               >
                 Publisher value stored in database
-              </option>
+              </option> */}
             </select>
 
             <label htmlFor="genre">Genre:</label>
@@ -117,7 +134,9 @@ function Update() {
               type="text"
               id="genre"
               name="genre"
-              value="Genre data stored in database"
+              defaultValue={book.genre}
+              // Kit: change to above to use the book "satellite"
+              //value="Genre data stored in database"
               placeholder="Genre"
               required
             ></input>
@@ -127,7 +146,9 @@ function Update() {
               type="text"
               id="numberofpages"
               name="numberofpages"
-              value="255"
+              defaultValue={book.pages}
+              // Kit: change to above to use the book "satellite"
+              //value="255"
               placeholder="Number of Pages"
               required
             ></input>
@@ -137,22 +158,28 @@ function Update() {
               type="text"
               id="rating"
               name="rating"
-              value="5"
+              defaultValue={book.rating}
+              // Kit: change to above to use the book "satellite"
+              //value="5"
               maxlength="2"
               size="2"
               required
             ></input>
             <label htmlFor="synop">Synopsis:</label>
             <br />
-            <input
+            {/* synopsis is a textarea not an input */}
+            <textarea
               type="text"
-              id="synop"
-              name="synop"
-              value="Synopsis value stored in database"
+              id="synopsis" //Kit: change to the full word to prevent errors in Back End
+              name="synopsis"
+              defaultValue={book.synopsis}
+              // Kit: change to above to use the book "satellite"
+              //value="Synopsis value stored in database"
               placeholder="Synopsis"
               required
-            ></input>
-            <button type="submit">Update</button>
+            ></textarea>
+            {/* Kit: change from button to input */}
+            <input type="submit">Update</input>
           </form>
         </div>
       </div>

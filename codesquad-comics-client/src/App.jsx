@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom"
 import './App.css'
 import Header from  './shared/header'
@@ -12,26 +12,24 @@ import Update from  './components/update'
 import Footer from  './shared/footer'
 
 function App() {
-  const [user, setUser] = useState(1);
-  localStorage.setItem("user", user);
+  const [user, setUser] = useState(localStorage.getItem("user") || {});
 
   return (
-    <>
-      <div>
+      <div className="App">
         <Header user={user} setUser={setUser}/>
         <Routes>
-        <Route path="/home" index element= {<Home />} />
+        <Route path="/" index element= {<Home />} />
+        {/* Kit: the home path has to be "/" */}
         <Route path="/about" element= {<About />} />
         <Route path="/admin" element= {<Admin />} />
         <Route path="/create" element= {<Create />} />
         <Route path="/login" element = {<Login user={user} setUser={setUser} />} />
         <Route path="/signup" element = {<SignUp user={user} setUser={setUser} />} />
         <Route path="/update" element= {<Update />} />
-        <Route path ="*" element={<h1>Page not Found</h1>} />
+        {/* <Route path ="*" element={<h1>Page not Found</h1>} /> */}
         </Routes>
         <Footer/>
       </div>
-    </>
   )
 }
 

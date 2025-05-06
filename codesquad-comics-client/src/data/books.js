@@ -117,7 +117,7 @@ const books = [
     rating: 3,
     synopsis:
       "This masterpiece of modern comics storytelling brings to vivid life a dark world and an even darker man. Together with inker Klaus Janson and colorist Lynn Varley, writer/artist Frank Miller completely reinvents the legend of Batman in his saga of a near-future Gotham City gone to rot, ten years after the Dark Knight's retirement.\nCrime runs rampant in the streets, and the man who was Batman is still tortured by the memories of his parents' murders. As civil society crumbles around him, Bruce Wayne's long-suppressed vigilante side finally breaks free of its self-imposed shackles.\nThe Dark Knight returns in a blaze of fury, taking on a whole new generation of criminals and matching their level of violence. He is soon joined by this generation's Robin—a girl named Carrie Kelley, who proves to be just as invaluable as her predecessors.\nBut can Batman and Robin deal with the threat posed by their deadliest enemies, after years of incarceration have made them into perfect psychopaths? And more important, can anyone survive the coming fallout of an undeclared war between the superpowers—or a clash of what were once the world's greatest superheroes?\nOver fifteen years after its debut, Batman: The Dark Knight Returns remains an undisputed classic and one of the most influential stories ever told in the comics medium.",
-    image: "batman.jpg",
+      imageUrl: "batman.jpg",
   },
   {
     _id: "d4edb814-b93e-4cbb-a5a1-6ee8e452c4f0",
@@ -129,7 +129,7 @@ const books = [
     rating: 4,
     synopsis:
       "Activist-academic Meg-John Barker and cartoonist Julia Scheele illuminate the histories of queer thought and LGBTQ+ action in this groundbreaking non-fiction graphic novel.\nFrom identity politics and gender roles to privilege and exclusion, Queer explores how we came to view sex, gender and sexuality in the ways that we do; how these ideas get tangled up with our culture and our understanding of biology, psychology and sexology; and how these views have been disputed and challenged.\nAlong the way we look at key landmarks which shift our perspective of what’s ‘normal’ – Alfred Kinsey’s view of sexuality as a spectrum, Judith Butler’s view of gendered behaviour as a performance, the play Wicked, or moments in Casino Royale when we’re invited to view James Bond with the kind of desiring gaze usually directed at female bodies in mainstream media.\nPresented in a brilliantly engaging and witty style, this is a unique portrait of the universe of queer thinking.",
-    image: "queer.jpg",
+      imageUrl: "queer.jpg",
   },
   {
     _id: "402993dd-ea02-4ff1-b60e-4501d6d4caf7",
@@ -141,7 +141,7 @@ const books = [
     rating: 4,
     synopsis:
       'In this graphic novel adaptation of Octavia E. Butler’s Parable of the Sower by Damian Duffy and John Jennings, the award-winning team behind Kindred: A Graphic Novel Adaptation, the "author" portrays a searing vision of America’s future. In the year 2024, the country is marred by unattended environmental and economic crises that lead to social chaos. Lauren Olamina, a preacher’s daughter living in Los Angeles, is protected from danger by the walls of her gated community. However, in a night of fire and death, what begins as a fight for survival soon leads to something much more: a startling vision of human destiny . . . and the birth of a new faith.',
-    image: "parable-of-the-sower.jpg",
+      imageUrl: "parable-of-the-sower.jpg",
   },
 ];
 

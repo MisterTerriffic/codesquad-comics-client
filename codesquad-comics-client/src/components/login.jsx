@@ -1,9 +1,48 @@
-import { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login(user, setUser) {
+function Login({user, setUser}) {
   const navigate = useNavigate();
 
+  //Kit: establish the handler function
+  const handleLoginFormSubmit = (e) => {
+    e.preventDefault();
+    //define form body:
+    const body = {
+      username: e.target.username.value,
+      password: e.target.password.value,
+    };
+    //fetch
+    const url =
+    "https://course-project-codesquad-comics-server.onrender.com/login/local";
+
+    fetch(url, { method: "POST", body: JSON.stringify(body) })
+      .then((response) => response.JSON())
+      //Kit: incorrect
+      /*
+      .then(() => {
+        localStorage.setFirstName("first name", JSON.stringify(firstName));
+        localStorage.setLastName("last name", JSON.stringify(lastName));
+        localStorage.setEmail("email", JSON.stringify(email));
+        localStorage.setPassword("password", JSON.stringify(password));
+        navigate("/admin");
+        console.log("Success");
+      })
+      .catch(console.log("Error"));
+      */
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("result", result);
+        localStorage.setItem("user", JSON.stringify(result.data));
+        setUser(result.data);
+        navigate("/admin");
+      })
+      .catch((error) => console.log("error", error));
+
+  }
+
+  // Kit: this is not needed
+  /*
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,48 +68,35 @@ function Login(user, setUser) {
     e.preventDefault();
     console.log("Password", e.target.value);
   };
+  */
+   
 
-  const url =
-    "https://course-project-codesquad-comics-server.onrender.com/login/local";
-
-  fetch(url, { method: "POST", body: JSON.stringify() })
-    .then((response) => response.JSON())
-    .then(() => {
-      localStorage.setFirstName("first name", JSON.stringify(firstName));
-      localStorage.setLastName("last name", JSON.stringify(lastName));
-      localStorage.setEmail("email", JSON.stringify(email));
-      localStorage.setPassword("password", JSON.stringify(password));
-      navigate("/admin");
-      console.log("Success");
-    })
-    .catch(console.log("Error"));
-
+  // Kit: for the Login page: you only needed the username and password
   return (
-    <form onSubmit={Login}>
+    // Kit: incorrect, you had the component {Login} here, which caused your code to break. We call the handleLoginFormSubmit handler function
+    <form onSubmit={handleLoginFormSubmit}>
+      {/* Kit: you did not have labels for your form */}
+      <label htmlFor="username">Username:</label>
       <input
-        type="firstName"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        type="text" id="username" name="username" placeholder="username"
+        // incorrect:
+        // type="email"
+        // placeholder="Email"
+        // value={email}
+        // onChange={(e) => setEmail(e.target.value)}
       />
-      <input
-        type="lastName"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <label htmlFor="password">Password:</label>
       <input
         type="password"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        //incorrect:
+        // value={password}
+        // onChange={(e) => setPassword(e.target.value)}
+        id="password"
+        name="password"
       />
+      {/* Kit: you did not have a input as a button */}
+      <input type="submit" />
     </form>
   );
 }
