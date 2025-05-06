@@ -48,7 +48,7 @@ function Header({user,setUser}){
         <li>
           <Link to="/about">ABOUT</Link>
         </li>
-        {/* {user.username ? (
+        {user.username ? (
           <>
             <li>
               <Link to="/admin">ADMIN</Link>
@@ -63,7 +63,7 @@ function Header({user,setUser}){
           <li>
             <Link to="/login">LOGIN</Link>
           </li>
-        )} */}
+        )}
       </ul>
     </nav>
     <a href="#" onClick={handleLogout}>Logout</a>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom"
 import './App.css'
-import Header from  './shared/header'
-import Home from  './components/home'
-import About from  './components/about'
-import Admin from  './components/admin'
-import Create from  './components/create'
-import Login from  './components/login'
-import SignUp from  './components/signup'
-import Update from  './components/update'
-import Footer from  './shared/footer'
+import Header from  './shared/Header'
+import Home from  './components/Home'
+import About from  './components/About'
+import Admin from  './components/Admin'
+import Create from  './components/Create'
+import Login from  './components/Login'
+import SignUp from  './components/Signup'
+import Update from  './components/Update'
+import Footer from  './shared/Footer'
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem("user") || {});
