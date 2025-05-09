@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import booksData from "../data/books";
+import books from "../data/books";
 
 const Admin = () => {
-  const [books, setBooks] = useState([]);
+  const [bookData, setBookData] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    setBookData(bookData);
     fetch("http://localhost:8080/api/books")
       .then((response) => response.json())
-      .then((result) => setBooks(result.data))
-      .catch((error) => console.log("error :>> ", error));
+      .then((bookData) => setBookData(bookData))
+      .catch(console.log("error :>> "));
   }, []);
 
   const handleDeleteBook = (bookId) => {
@@ -20,8 +20,8 @@ const Admin = () => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((result) => console.log("result :>> ", result))
-      .catch((error) => console.log("error :>> ", error));
+      .then((bookId) => console.log("result :>> ", bookId))
+      .catch(console.log("error :>> "));
   };
 
   return (

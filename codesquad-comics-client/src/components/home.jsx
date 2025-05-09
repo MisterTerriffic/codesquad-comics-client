@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-//import books from "../data/books";
+import books from "../data/books";
 
 function home() {
-  const [books, setBooks] = useState([]);
+  const [bookData, setBookData] = useState([]);
       //const [bookData, setBookData] = useState([]); //correct syntax, but naming conventions create cumulative conflicts within your codebase
 
   const url = "https://course-project-codesquad-comics-server.onrender.com/api/books";
 
   useEffect(() => {
     //setBookData(bookData);//always fetch first
+    setBookData(bookData);
     fetch(url)
     .then((response) => response.json())
     .then((result) => {
-        setBooks(result.data); //Kit: result.data is OK
+        setBookData(result.data); //Kit: result.data is OK
         console.log(result.data);
     })
     //.catch(console.log("Error")) //Kit: almost
-    .catch((error) => console.log("error", error));
+    .catch(console.log("error"));
   }, []);
 
   return (
@@ -37,16 +38,16 @@ function home() {
       </div>
        {/* Kit: this should not be pulling from the books.js file but from the books state. See renamed variables */}
        <div>
-       {books.map((book) => (
-        <div key={book._id} className="box-design">
+       {bookData.map((books) => (
+        <div key={books._id} className="box-design">
           <ul>
-            <li>{book.title}</li>
-            <li>{book.author}</li>
-            <li>{book.publisher}</li>
-            <li>{book.genre}</li>
-            <li>{book.pages}</li>
-            <li>{book.rating}</li>
-            <li>{book.synopsis}</li>
+            <li>{books.title}</li>
+            <li>{books.author}</li>
+            <li>{books.publisher}</li>
+            <li>{books.genre}</li>
+            <li>{books.pages}</li>
+            <li>{books.rating}</li>
+            <li>{books.synopsis}</li>
           </ul>
         </div>
       ))}

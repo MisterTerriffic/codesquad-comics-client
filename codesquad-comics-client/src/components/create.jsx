@@ -16,7 +16,7 @@ function Create() {
       synopsis: e.target.synopsis.value,
     }; //correct
 
-   //correct
+    //correct
     console.log("Create Book Submitting");
 
     console.log(e.target.title.value);
@@ -32,13 +32,13 @@ function Create() {
 
     fetch(url, { method: "POST", body: JSON.stringify(body) }) //correct
       .then((response) => response.JSON())
-      .then((result) => { //Kit: accept a parameter of result
-        console.log("Success", result);
+      .then((body) => {
+        //Kit: accept a parameter of result
+        console.log("Success", body);
         navigate("/admin");
-        
       })
       //.catch(console.log("Error")); //Kit: almost
-      .catch((error) => console.log("error", error));
+      .catch(console.log("error"));
   };
 
   return (
@@ -50,24 +50,36 @@ function Create() {
       <input type="text" id="author" name="author" required />
       <label htmlFor="Publisher">Publisher:</label>
       <input type="text" id="publisher" name="publisher" required />
+      <select id="publishers">
+        <option value="Select" selected disabled>Select</option>
+        <option value="Boom Box">BOOM! Box</option>
+        <option value="DC">DC Comics</option>
+        <option value="HNA">Harry N. Abrams</option>
+        <option value="Icon Books">Icon Books</option>
+        <option value="Image Comics">Image Comics</option>
+        <option value="Marvel">Marvel</option>
+        <option value="Simon & Schuster">Simon & Schuster</option>
+        <option value="Top Shelf Productions">Top Shelf Productions</option>
+        <option value="VIZ Media LLC">VIZ Media LLC</option>
+      </select>
       {/* where is the select portion? */}
       <label htmlFor="genre">Genre:</label>
-      <input type="text" id="genre" name="genre" required/>
+      <input type="text" id="genre" name="genre" required />
       <label htmlFor="numberofpages">Number of Pages:</label>
       <input type="number" id="numberofpages" name="numberofpages" required />
       <label htmlFor="rating">Rating:</label>
       <input type="number" id="rating" name="rating" required />
       {/* this should be a text area */}
-      <label htmlFor="synopsis">Synopsis:</label>
+      <label htmlFor="synopsis">Synopsis: </label>
+      <input type="text" id="synopsis" name="synopsis" required />
       {/* <input type="text" id="synopsis" name="synopsis" required/> */}
       <textarea
-            name="synopsis"
-            id="synopsis"
-            placeholder="Synopsis"
-            required
+        name="synopsis"
+        id="synopsis"
+        placeholder="Synopsis"
+        required
       ></textarea>
       {/* Kit: you did not have an input */}
-      <input type="submit"/>
     </form>
   );
 }

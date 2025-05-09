@@ -26,6 +26,7 @@ function App() {
         <Route path="/login" element = {<Login user={user} setUser={setUser} />} />
         <Route path="/signup" element = {<SignUp user={user} setUser={setUser} />} />
         <Route path="/update" element= {<Update />} />
+        <Route path ="*" element={<h1>Page not Found</h1>} />
         {/* <Route path ="*" element={<h1>Page not Found</h1>} /> */}
         </Routes>
         <Footer/>
