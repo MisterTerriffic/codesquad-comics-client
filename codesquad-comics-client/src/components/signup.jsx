@@ -4,36 +4,6 @@ import { useNavigate } from "react-router-dom";
 function SignUp({user, setUser}) {
   const navigate = useNavigate();
 
-  //Kit: state is not needed here
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // not needed
-  /*
-  const handleFirstName = (e) => {
-    setFirstName(e.target.value);
-    e.preventDefault();
-    console.log("First Name", e.target.value);
-  };
-  const handleLastName = (e) => {
-    setLastName(e.target.value);
-    e.preventDefault();
-    console.log("Last Name", e.target.value);
-  };
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-    e.preventDefault();
-    console.log("Email", e.target.value);
-  };
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-    e.preventDefault();
-    console.log("Password", e.target.value);
-  };
-
-  */
 
   //Kit: establish handler function
   const handleSignupFormSubmit = (e) => {
@@ -58,9 +28,15 @@ function SignUp({user, setUser}) {
     .then((result) => { //Kit: add params of result
       //correct:
       console.log("result", result);
-        localStorage.setItem("user", JSON.stringify(result.data));
-        setUser(result.data);
-        navigate("/admin");
+      localStorage.setFirstName("first name", JSON.stringify(firstName));
+      localStorage.setLastName("last name", JSON.stringify(lastName));
+      localStorage.setUsername("username", JSON.stringify(username));
+      localStorage.setPassword("password", JSON.stringify(password));
+      navigate("/admin");
+      console.log("Success");
+        // localStorage.setItem("user", JSON.stringify(result.data));
+        // setUser(result.data);
+        // navigate("/admin");
       //Kit: incorrect
       // localStorage.setFirstName("first name", JSON.stringify(firstName));
       // localStorage.setLastName("last name", JSON.stringify(lastName));
@@ -77,13 +53,15 @@ function SignUp({user, setUser}) {
 
   return (
     // Kit: incorrect, you were calling the {SignUp}component as the parameter
-    <form onSubmit={handleSignupFormSubmit}>
+    <form onSubmit={SignUp}>
        {/* Kit: you did not have labels for your form, nor required */}
        <label htmlFor="firstName">First Name</label>
       <input
         type="text" //type should be text
-        placeholder="First Name"
-        name="firstName" id="firstName" required     
+         value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        // placeholder="First Name"
+        // name="firstName" id="firstName" required     
         //incorrect
         // value={firstName}
         // onChange={(e) => setFirstName(e.target.value)}

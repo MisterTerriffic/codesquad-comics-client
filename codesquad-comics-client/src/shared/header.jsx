@@ -25,15 +25,15 @@ function Header({user,setUser}){
 
     
 
-        // function handleLogout(user){
-        //     if(user.username === true){
-        //         // <a href="#" onClick={handleLogout}>Logout</a>
-        //         <a href="/admin" >Admin</a>
+        function handleLogout(user){
+            if(user.username === true){
+                // <a href="#" onClick={handleLogout}>Logout</a>
+                <a href="/admin" >Admin</a>
 
-        //     }else{
-        //         <a href="/login" >Login</a>
-        //     }
-        // }
+            }else{
+                <a href="/login" >Login</a>
+            }
+        }
     return(
         <header> 
     <div className="header-design">
@@ -48,7 +48,7 @@ function Header({user,setUser}){
         <li>
           <Link to="/about">ABOUT</Link>
         </li>
-        {/* {user.username ? (
+        {user.username ? (
           <>
             <li>
               <Link to="/admin">ADMIN</Link>
@@ -63,7 +63,7 @@ function Header({user,setUser}){
           <li>
             <Link to="/login">LOGIN</Link>
           </li>
-        )} */}
+        )}
       </ul>
     </nav>
     <a href="#" onClick={handleLogout}>Logout</a>

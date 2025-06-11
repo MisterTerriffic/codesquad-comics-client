@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import books from "../data/books";
+import Books from "../data/books";
 
 function home() {
   const [bookData, setBookData] = useState([]);
@@ -38,16 +38,16 @@ function home() {
       </div>
        {/* Kit: this should not be pulling from the books.js file but from the books state. See renamed variables */}
        <div>
-       {bookData.map((books) => (
-        <div key={books._id} className="box-design">
+       {bookData.map((Books) => (
+        <div key={Books._id} className="box-design">
           <ul>
-            <li>{books.title}</li>
-            <li>{books.author}</li>
-            <li>{books.publisher}</li>
-            <li>{books.genre}</li>
-            <li>{books.pages}</li>
-            <li>{books.rating}</li>
-            <li>{books.synopsis}</li>
+            <li>{Books.title}</li>
+            <li>{Books.author}</li>
+            <li>{Books.publisher}</li>
+            <li>{Books.genre}</li>
+            <li>{Books.pages}</li>
+            <li>{Books.rating}</li>
+            <li>{Books.synopsis}</li>
           </ul>
         </div>
       ))}
