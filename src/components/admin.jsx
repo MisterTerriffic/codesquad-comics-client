@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import books from "../data/books"
+import Books from "../data/books"
 
 function Admin(){ 
     const [bookData, setBookData] = useState([]);
@@ -13,8 +13,8 @@ function Admin(){
         fetch(url)
         .then((response) => response.json())
         .then((result) => {
-            setBookData(result.data.book);
-            console.log(result.data.book);
+            setBookData(result.data.Books);
+            console.log(result.data.Books);
         })
         .catch(console.log("Error"))
       }, []);
@@ -34,16 +34,16 @@ function Admin(){
     <div>
         <button onClick="/update">Update</button> 
     </div>
-    <div key={books._id} className="box-design">
-    {bookData.map((bookData) => (
+    <div key={Books._id} className="box-design">
+    {Books.map((Books) => (
         <tr>
-            <td>{bookData.title}</td>
-            <td>{bookData.author}</td>
-            <td>{bookData.publisher}</td>
-            <td>{bookData.genre}</td>
-            <td>{bookData.pages}</td>
-            <td>{bookData.rating}</td>
-            <td>{bookData.synopsis}</td>
+            <td>{Books.title}</td>
+            <td>{Books.author}</td>
+            <td>{Books.publisher}</td>
+            <td>{Books.genre}</td>
+            <td>{Books.pages}</td>
+            <td>{Books.rating}</td>
+            <td>{Books.synopsis}</td>
         </tr>
     ))}
     </div>

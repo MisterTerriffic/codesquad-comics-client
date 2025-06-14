@@ -1,5 +1,5 @@
 function Footer(){
-    <div class="footer-design">
+    <div classNameNameName="footer-design">
         <span>
             <h3>VISIT US</h3>
            <br/> CodeSquad Comics

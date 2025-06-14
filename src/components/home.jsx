@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import books from "../data/books";
+import Books from "../data/books";
 
 function home() {
   const [bookData, setBookData] = useState([]);
@@ -33,16 +33,16 @@ function home() {
           link for the desired graphic novel.
         </p>
       </div>
-      {bookData.map((book) => (
-        <div key={book._id} className="box-design">
+      {bookData.map((Books) => (
+        <div key={Books._id} className="box-design">
           <ul>
-            <li>{book.title}</li>
-            <li>{book.author}</li>
-            <li>{book.publisher}</li>
-            <li>{book.genre}</li>
-            <li>{book.pages}</li>
-            <li>{book.rating}</li>
-            <li>{book.synopsis}</li>
+            <li>{Books.title}</li>
+            <li>{Books.author}</li>
+            <li>{Books.publisher}</li>
+            <li>{Books.genre}</li>
+            <li>{Books.pages}</li>
+            <li>{Books.rating}</li>
+            <li>{Books.synopsis}</li>
           </ul>
         </div>
       ))}

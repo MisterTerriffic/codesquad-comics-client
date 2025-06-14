@@ -20,7 +20,7 @@ function App() {
       <div>
         <Header user={user} setUser={setUser}/>
         <Routes>
-        <Route path="/home" index element= {<Home />} />
+        <Route path="/" index element= {<Home />} />
         <Route path="/about" element= {<About />} />
         <Route path="/admin" element= {<Admin />} />
         <Route path="/create" element= {<Create />} />

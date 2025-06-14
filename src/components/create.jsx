@@ -5,6 +5,7 @@ function Create() {
   const navigate = useNavigate();
 
   const handleBookCreate = (e) => {
+    e.preventDefault();
     const body = {
       title: e.target.title.value,
       author: e.target.author.value,
