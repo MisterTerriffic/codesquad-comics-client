@@ -34,7 +34,7 @@ function Admin(){
     <div>
         <button onClick="/update">Update</button> 
     </div>
-    <div key={books._id} class="box-design">
+    <div key={books._id} className="box-design">
     {bookData.map((bookData) => (
         <tr>
             <td>{bookData.title}</td>
